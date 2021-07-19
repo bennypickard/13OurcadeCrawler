@@ -15,8 +15,16 @@ export default class Game extends Phaser.Scene
 
     create()
     {
-        this.add.image(0,0,"tiles");
-        
-        
+    
+        const map = this.make.tilemap({key: 'dungeon'})
+    		
+        //first var is string. must = name of tileset in Tiled in bottom right.
+        const tileset = map.addTilesetImage('dungeon', 'tiles',  )
+
+        map.createStaticLayer('Ground', tileset)
+        map.createStaticLayer("Walls", tileset )
+
+
+
     }
 }

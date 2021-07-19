@@ -1,9 +1,13 @@
 {
   "ExpandedNodes": [
     "",
+    "\\public",
+    "\\public\\dungeons",
+    "\\public\\tiles",
+    "\\resources",
     "\\src",
     "\\src\\scenes"
   ],
-  "SelectedNode": "\\src\\scenes\\Game.ts",
+  "SelectedNode": "\\public\\tiles\\dungeon-01.json",
   "PreviewInSolutionExplorer": false
 }

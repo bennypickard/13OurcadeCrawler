@@ -1,4 +1,7 @@
 import Phaser from 'phaser'
+import { debugDraw } from "../utils/debug"
+
+
 
 export default class Game extends Phaser.Scene
 {
@@ -45,15 +48,8 @@ export default class Game extends Phaser.Scene
 
         wallsLayer.setCollisionByProperty({collides: true});
 
-
-        //[][][]WALL DEBUG
-        const debugGraphics = this.add.graphics().setAlpha(0.7)
-        wallsLayer.renderDebug(debugGraphics,{
-            tileColor: null,
-            collidingTileColor: new Phaser.Display.Color(243, 234, 48, 255),
-            faceColor: new Phaser.Display.Color(40, 39, 37, 255),
-
-        })
+        //Draw collision walls
+        //debugDraw(wallsLayer, this)
 
 
         //[][][]FAUNE CHARACTER
@@ -101,7 +97,7 @@ export default class Game extends Phaser.Scene
         this.physics.add.collider(this.faune, wallsLayer);
 
         //[][][]CAMERA
-        this.cameras.main.startFollow(this.faune, false)
+        this.cameras.main.startFollow(this.faune, true)
 
 
     }
@@ -153,7 +149,11 @@ export default class Game extends Phaser.Scene
         }
         else
         {
-            this.faune.anims.play("faune-idle-down", true)
+            //String splitter, useful for chaining animations
+            const parts = this.faune.anims.currentAnim.key.split("-")
+            parts[1] = "idle"
+            this.faune.play(parts.join("-"))
+
             this.faune.setVelocity(0,0)
         }
 

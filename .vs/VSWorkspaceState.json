@@ -2,6 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\public",
+    "\\public\\character",
+    "\\public\\character\\sprites",
     "\\public\\dungeons",
     "\\public\\tiles",
     "\\resources",
